@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var monkeyanimalRouter = require('./routes/monkeyanimal');
 var gridbuildRouter = require('./routes/gridbuild');
+var selectorRouter = require('./routes/selector');
 var app = express();
 
 // view engine setup
@@ -24,6 +25,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/monkeyanimal', monkeyanimalRouter);
 app.use('/gridbuild', gridbuildRouter);
+app.use('/selector', selectorRouter);
 
 
 // catch 404 and forward to error handler
