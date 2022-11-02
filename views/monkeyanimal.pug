@@ -2,4 +2,9 @@ extends layout
 
 block content
   h1= title 
-  
+  - var results = [{"monkeyAge": 14, "monkeyName": "Chitti", "monkeyBreed": "Pug"}, {"monkeyAge": 15, "monkeyName": "Mahi", "monkeyBreed": "Tug"}, {"monkeyAge": 14, "monkeyName": "Madhu", "monkeyBreed": "Mug"}]
+    div(class = 'container-fluid')
+      div(class = 'row')
+        each item in results 
+          div(class="col-sm-2") monkeyAge : #{item["monkeyAge"]} <br> monkeyName : #{item["monkeyName"]} <br> monkeyBreed: #{item["monkeyBreed"]}
+          
