@@ -54,7 +54,7 @@ async function recreateDB(){
       if(err) return console.error(err);
       console.log("First object saved")
       });
-    let instance2 = new monkeyanimal({monkeyAge: 15, monkeyName:"Mahi", monkeyBreed: "Tug"});
+    let instance2 = new monkeyanimal({monkeyAge: 15, monkeyName: "Mahi", monkeyBreed: "Tug"});
     instance2.save( function(err,doc) {
       if(err) return console.error(err);
       console.log("second object saved")
