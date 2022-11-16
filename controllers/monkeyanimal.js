@@ -1,9 +1,9 @@
 var monkeyanimal = require('../models/monkeyanimal');
-// List of all Costumes
+// List of all monkeyanimals
 exports.monkeyanimal_list = function(req, res) {
  res.send('NOT IMPLEMENTED: monkeyanimal list');
 };
-// for a specific Costume.
+// for a specific monkeyanimal.
 exports.monkeyanimal_detail = async function(req, res) {
     console.log("detail" + req.params.id)
     try {
@@ -15,15 +15,23 @@ exports.monkeyanimal_detail = async function(req, res) {
     }
     };
 
-// Handle Costume create on POST.
+// Handle monkeyanimal create on POST.
 exports.monkeyanimal_create_post = function(req, res) {
  res.send('NOT IMPLEMENTED: monkeyanimal create POST');
 };
-// Handle Costume delete form on DELETE.
-exports.monkeyanimal_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: monkeyanimal delete DELETE ' + req.params.id);
-};
-// Handle Costume update form on PUT.
+// Handle monkeyanimal delete form on DELETE.
+exports.monkeyanimal_delete =  async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await monkeyanimal.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
+// Handle monkeyanimal update form on PUT.
 exports.monkeyanimal_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body
     ${JSON.stringify(req.body)}`)
@@ -45,7 +53,7 @@ exports.monkeyanimal_update_put = async function(req, res) {
     };
 // VIEWS
 
-   // List of all Costumes
+   // List of all monkeyanimals
 exports.monkeyanimal_list = async function(req, res) {
     try{
     themonkeyanimal = await monkeyanimal.find();
@@ -68,14 +76,14 @@ exports.monkeyanimal_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
    };
-   // Handle Costume create on POST.
+   // Handle monkeyanimal create on POST.
 exports.monkeyanimal_create_post = async function(req, res) {
     console.log(req.body)
     let document = new monkeyanimal();
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
-    // {"costume_type":"goat", "cost":12, "size":"large"}
+    // {"monkeyanimal_type":"goat", "cost":12, "size":"large"}
     document.monkeyAge = req.body.monkeyAge;
     document.monkeyName = req.body.monkeyName;
     document.monkeyBreed = req.body.monkeyBreed;
@@ -88,3 +96,15 @@ exports.monkeyanimal_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
 }
+exports.monkeyanimal_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await monkeyanimal.findById( req.query.id)
+    res.render('monkeyanimaldetail',
+   { title: 'monkeyanimal Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };
