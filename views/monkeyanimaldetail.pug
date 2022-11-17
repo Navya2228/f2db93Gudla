@@ -1,6 +1,6 @@
 extends layout
 block content
- h1= title
+ h1(class='new_head')= title
  if (toShow == null) 
   h2 No instance to detail   
  else
@@ -10,14 +10,14 @@ block content
   - let monkeyBreed = toShow.monkeyBreed
   div
    div.row
-   div(class='monkeyanimalAttr mr-3') monkeyid is:
+   div(class='new_head') monkeyid is:
    div #{monkeyid}
    div.row
-   div(class='monkeyanimalAttr mr-3') monkeyAge is:
+   div(class='new_head') monkeyAge is:
    div #{monkeyAge}
    div.row
-   div(class='monkeyanimalAttr mr-3') monkeyName is:
+   div(class='new_head') monkeyName is:
    div #{monkeyName}
    div.row
-   div(class='monkeyanimalAttr mr-3') monkeyBreed is:
+   div(class='new_head') monkeyBreed is:
    div #{monkeyBreed}
