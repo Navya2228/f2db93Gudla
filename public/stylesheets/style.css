@@ -7,7 +7,20 @@ a {
   color: #00B7FF;
 }
 .monkeyanimalAttr {
-  background-color: lightgreen;
+  background-color: palevioletred;
   width: 120px;
  }
- 
+ .head_title {
+  background-color: blue;
+  text-align: center;
+  font-style: normal;
+  font-family: 'Courier New', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 400;
+ }
+ .new_head {
+  background-color: lightcoral;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-style:Arial, Helvetica, sans-serif;
+  width: 100%;
+ }
