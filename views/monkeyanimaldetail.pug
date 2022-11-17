@@ -1,20 +1,23 @@
 extends layout
 block content
  h1= title
- - let monkeyid = toShow._id
- - let monkeyAge = toShow.monkeyAge
- - let monkeyName = toShow.monkeyName
- - let monkeyBreed = toShow.monkeyBreed
- div
-  div.row
-  div(class='monkeyanimalAttr mr-3') monkeyid is:
-  div #{monkeyid}
-  div.row
-  div(class='monkeyanimalAttr mr-3') monkeyAge is:
-  div #{monkeyAge}
-  div.row
-  div(class='monkeyanimalAttr mr-3') monkeyName is:
-  div #{monkeyName}
-  div.row
-  div(class='monkeyanimalAttr mr-3') monkeyBreed is:
-  div #{monkeyBreed}
+ if (toShow == null) 
+  h2 No instance to detail   
+ else
+  - let monkeyid = toShow._id
+  - let monkeyAge = toShow.monkeyAge
+  - let monkeyName = toShow.monkeyName
+  - let monkeyBreed = toShow.monkeyBreed
+  div
+   div.row
+   div(class='monkeyanimalAttr mr-3') monkeyid is:
+   div #{monkeyid}
+   div.row
+   div(class='monkeyanimalAttr mr-3') monkeyAge is:
+   div #{monkeyAge}
+   div.row
+   div(class='monkeyanimalAttr mr-3') monkeyName is:
+   div #{monkeyName}
+   div.row
+   div(class='monkeyanimalAttr mr-3') monkeyBreed is:
+   div #{monkeyBreed}

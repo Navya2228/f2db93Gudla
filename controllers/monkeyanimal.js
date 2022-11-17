@@ -118,3 +118,26 @@ exports.monkeyanimal_create_Page = function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+exports.monkeyanimal_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await monkeyanimal.findById(req.query.id)
+    res.render('monkeyanimalupdate', { title: 'monkeyanimal Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };
+exports.monkeyanimal_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await monkeyanimal.findById(req.query.id)
+    res.render('monkeyanimaldelete', { title: 'monkeyanimal Delete', toShow:
+   result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

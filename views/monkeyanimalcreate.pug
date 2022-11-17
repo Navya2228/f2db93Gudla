@@ -1,31 +1,34 @@
-extends layout
-block content
- h1= title
- form(id='monkeyanimalForm', action="/resource/monkeyanimal", method="POST")
-  div.form-group
-   label.monkeyanimalAttr(for='monkeyAge') monkeyAge
-   input#monkeyAge(type='number', name='monkeyAge')
-  div.form-group
-   label.monkeyanimalAttr(for='monkeyName') monkeyName
-   input#monkeyName(type='text', name='monkeyName')
-  div.form-group
-   label.monkeyanimalAttr(for='monkeyBreed') monkeyBreed
-   input#monkeyBreed(type='text', name='monkeyBreed')
-  input(type="submit")
- script.
-  document.forms['monkeyanimalForm'].addEventListener('submit', (event) => {
-  event.preventDefault();
- // TODO do something here to show user that form is being submitted
-  fetch(event.target.action, {
-  method: 'POST',
-  body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-  }).then((resp) => {
-  return resp.json(); // or resp.text() or whatever the server sends
-  }).then((body) => {
-   alert("Save succeded")
- // TODO handle body
-  }).catch((error) => {
- // TODO handle error
-   alert("Save failed " + error )
-  });
-  });
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  form(id='monkeyanimalForm', action="/resource/monkeyanimal", method="POST") 
+    div.form-group 
+        label.monkeyanimalAttr(for='monkeyAge') monkeyAge
+        input#monkeyAge(type='number', name='monkeyAge') 
+    div.form-group 
+        label.monkeyanimalAttr(for='monkeyanimalNumber') monkeyName 
+        input#monkeyName(type='text', name='monkeyName') 
+    div.form-group 
+        label.monkeyanimalAttr(for='monkeyBreed') monkeyBreed
+        input#monkeyBreed(type='text', name='monkeyBreed') 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['monkeyanimalForm'].addEventListener('submit', (event) => { 
+    event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    });
