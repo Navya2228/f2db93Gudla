@@ -13,3 +13,5 @@ router.get('/', monkeyanimal_controllers.monkeyanimal_view_all_Page );
 module.exports = router;
 /* GET detail monkeyanimal page */
 router.get('/detail', monkeyanimal_controllers.monkeyanimal_view_one_Page);
+/* GET create costume page */
+router.get('/create', monkeyanimal_controllers.monkeyanimal_create_Page);
