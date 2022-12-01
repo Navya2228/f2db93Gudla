@@ -7,15 +7,22 @@ router.get('/', function(req, res, next) {
 });
 var express = require('express');
 const monkeyanimal_controllers= require('../controllers/monkeyanimal');
+const secured = (req, res, next) => { 
+  if (req.user){ 
+    return next(); 
+  } 
+  req.session.returnTo = req.originalUrl; 
+  res.redirect("/login"); 
+}
 var router = express.Router();
 /* GET monkeyanimals */
 router.get('/', monkeyanimal_controllers.monkeyanimal_view_all_Page );
 module.exports = router;
 /* GET detail monkeyanimal page */
-router.get('/detail', monkeyanimal_controllers.monkeyanimal_view_one_Page);
+router.get('/detail',monkeyanimal_controllers.monkeyanimal_view_one_Page);
 /* GET create monkeyanimal page */
-router.get('/create', monkeyanimal_controllers.monkeyanimal_create_Page);
+router.get('/create',secured, monkeyanimal_controllers.monkeyanimal_create_Page);
 /* GET create update page */
-router.get('/update', monkeyanimal_controllers.monkeyanimal_update_Page);
+router.get('/update',secured, monkeyanimal_controllers.monkeyanimal_update_Page);
 /* GET delete monkeyanimal page */
-router.get('/delete', monkeyanimal_controllers.monkeyanimal_delete_Page);
+router.get('/delete',secured, monkeyanimal_controllers.monkeyanimal_delete_Page);
